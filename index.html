@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
 
   <!-- compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">	
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="mystyles.css">
 
@@ -16,12 +16,12 @@
 
 <body>
 
-  <div class = "container">
+  <div class="container">
 
     <h1>NASA BOT</h1>
     <p>Courtesy of EPIC API. Apollo-gies for this pun.</p>
-  
-    <div id = "jsLoop"></div>
+
+    <div id="jsLoop"></div>
 
   </div>
 
@@ -30,60 +30,90 @@
 
   <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
 
-        console.log("triggered document ready");
-        
-        $.ajax('https://epic.gsfc.nasa.gov/api/natural', {
-          success: function(data) {            
-            console.log(data);
-            
+      console.log("triggered document ready");
 
-            jQuery(data).each(function(){ 
-              console.log(this);
-
-              var caption = this["caption"]
-              var date = this["date"];
-              var image_name = this["image"];
-              var year = date.substring(0,4);
-              var month = date.substring(5,7);
-              var day = date.substring(8,10);
-              var imageURL = "https://epic.gsfc.nasa.gov/archive/natural/"+year+"/"+month+"/"+day+"/png/"+image_name+".png";
-
-              var newDiv = "<div class='image-block'>" 
-                            + "<div><img class='img-responsive' src='"+imageURL+"'></img></div>" 
-                            + "<div ><h3>" + "Planet Earth on " + date + "</h3></div>"
-                            +"<div >"+caption+"</div>"
-                            + "<span><button class='likeUnlike' href='#' type='button'>Like</button></span>"
-                            +"</div>"
-
-              // add element to div
-              $("div#jsLoop").append(newDiv);
- 
-            });
-            
-          
-            $(".likeUnlike").click(function (e) {
-              if ($(this).html() == "Like") {
-                $(this).html("Unlike");
-                //$(this).animate({height: "300px"});
+      $.ajax('https://epic.gsfc.nasa.gov/api/natural', {
+        success: function (data) {
+          console.log(data);
 
 
-              } else {
-                $(this).html("Like");
+          jQuery(data).each(function () {
+            console.log(this);
+
+            var caption = this["caption"]
+            var date = this["date"];
+            var image_name = this["image"];
+            var year = date.substring(0, 4);
+            var month = date.substring(5, 7);
+            var day = date.substring(8, 10);
+            var imageURL = "https://epic.gsfc.nasa.gov/archive/natural/" + year + "/" + month + "/" + day + "/png/" + image_name + ".png";
+
+            var newDiv = "<div class='image-block'>"
+              + "<div><img class='img-responsive' src='" + imageURL + "'></img></div>"
+              + "<div ><h3>" + "Planet Earth on " + date + "</h3></div>"
+              + "<div >" + caption + "</div>"
+              + "<span><button class='likeUnlike' href='#' type='button'>Like</button></span>"
+              + "</div>"
+
+            // add element to div
+            $("div#jsLoop").append(newDiv);
+
+          });
 
 
-              }
-            });
-          
-          }
-        });
+          $(".likeUnlike").click(function (e) {
+            if ($(this).html() == "Like") {
+              $(this).html("Unlike");
+              //$(this).animate({height: "300px"});
+
+
+            } else {
+              $(this).html("Like");
+
+
+            }
+          });
+
+        }
       });
 
 
+
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+          $('.arrow-up').fadeIn();
+        } else {
+          $('.arrow-up').fadeOut();
+        }
+      });
+
+      $(".arrow-up").click(function () {
+        $("html, body").animate({
+          scrollTop: 0
+        }, "slow");
+        return false;
+      });
+
+
+
+
+    });
+
+
+
+
+
+
+
+
   </script>
-  
+
+
+
+  <i class="arrow-up"></i>
 
 
 </body>

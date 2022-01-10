@@ -41,3 +41,19 @@ p {
 }
 
 
+
+
+
+
+.arrow-up {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    position: fixed;
+    bottom: 3em;
+    right: 5em;
+    transform: rotate(-135deg);
+    cursor:pointer;
+    display:none;
+  }
