@@ -40,11 +40,6 @@ p {
     margin-top: 1em;
 }
 
-
-
-
-
-
 .arrow-up {
     border: solid white;
     border-width: 0 3px 3px 0;
@@ -57,3 +52,12 @@ p {
     cursor:pointer;
     display:none;
   }
+
+
+
+.fa {
+    display:block;
+    padding-left:.6em;
+    font-size:1.8em;
+    color:rgb(185, 77, 77);
+}

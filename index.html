@@ -12,6 +12,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <!-- <script src="script.js"></script> -->
+
+  <!-- for like heart -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -56,6 +59,7 @@
               + "<div ><h3>" + "Planet Earth on " + date + "</h3></div>"
               + "<div >" + caption + "</div>"
               + "<span><button class='likeUnlike' href='#' type='button'>Like</button></span>"
+              + "<i class='fa fa-heart' style:'display:none;'></i>"
               + "</div>"
 
             // add element to div
@@ -67,12 +71,12 @@
           $(".likeUnlike").click(function (e) {
             if ($(this).html() == "Like") {
               $(this).html("Unlike");
-              //$(this).animate({height: "300px"});
+              $(".fa").toggle();
 
 
             } else {
               $(this).html("Like");
-
+              $(".fa").toggle();
 
             }
           });
@@ -114,7 +118,6 @@
 
 
   <i class="arrow-up"></i>
-
 
 </body>
 
