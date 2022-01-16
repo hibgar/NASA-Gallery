@@ -28,13 +28,17 @@
 
   </div>
 
+  <div class='spinner-wrapper'>
+    <div class="spinner"></div>
+  </div>
+
+
 
 
 
   <script type="text/javascript">
 
     $(document).ready(function () {
-
 
       console.log("triggered document ready");
 
@@ -108,14 +112,22 @@
 
 
 
-
-
-
+    let spinnerWrapper = document.querySelector('.spinner-wrapper');
+    $(document).on({
+      
+    ajaxStart: function(){
+        $("body").addClass("loading"); 
+    },
+    ajaxStop: function(){ 
+        $("body").removeClass("loading"); 
+        spinnerWrapper.parentElement.removeChild(spinnerWrapper);
+    }    
+});
 
 
   </script>
 
-
+<div class="overlay"></div>
 
   <i class="arrow-up"></i>
 
