@@ -112,6 +112,6 @@ body.loading{
     overflow: hidden;   
 }
 /* Make spinner image visible when body element has the loading class */
-body.loading .overlay{
+body.loading {
     display: block;
 }
